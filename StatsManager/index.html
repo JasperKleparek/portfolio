@@ -7,16 +7,45 @@
     <title>Stats Manager</title>
     <link href="css/lib/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    
+<body class="d-flex vh-100 justify-content-center align-items-center">
+    <card id="crdAwayTeam" class="col-6">
+        <div class="col-12 card-header d-flex justify-content-center">
+            <h1>Away Team</h1>
+        </div>
+
+        <form id="frmAwayRoster" class="col-9 offset:3 form-control">
+
+        </form>
+
+        <div class="col-6 d-flex flex-column justify-content-center">
+            <h3>Score:</h3>
+            <h1 id="intAwayScore">0</h1>
+            <button id="btnAwayGoal" class="btn btn-primary col-6">GOAL!</button>
+            <button id="btnSetAwayScore" class="btn btn-secondary col-6">Set Score</button>
+        </div>
+    </card>
+
+    <card id="crdHomeTeam" class="col-6">
+        <div class="col-12 card-header d-flex justify-content-center">
+            <h1>Home Team</h1>
+        </div>
+
+        <form id="frmHomeRoster" class="col-9 offset:3 form-control">
+
+        </form>
+    </card>
 
 
 
 
-    <script scr="js/lib/bootstrap.bundle.min.js"></script>
-    <script scr="js/lib/jquery-3.6.1.min.js"></script>
+    <script scr="js\lib\bootstrap.bundle.min.js"></script>
+    <script scr="js\lib\jquery-3.6.1.min.js"></script>
     <script>
 
+        $(document).on('click','.btnAwayGoal',function(){
+            $('#intAwayScore').setValue($('#intAwayScore').val() + 1);
+            console.log("button clicked");
+        })
 
 
     </script>
