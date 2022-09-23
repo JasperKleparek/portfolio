@@ -17,11 +17,13 @@
 
         </form>
 
-        <div class="d-flex flex-column justify-content-center align-items-center">
+        <div id="divAwayScore" class="d-flex flex-column justify-content-center align-items-center">
             <h3>Score:</h3>
-            <h1 id="intAwayScore">0</h1>
+            <h1>0</h1>
             <button id="btnAwayGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
             <button id="btnSetAwayScore" class="btn btn-secondary col-6 text-center">Set Score</button>
+            <input id="intSetAwayScore" type="int" placeholder="Input Away Score" aria-label="Input Away Score" style="display:none">
+            <button id="btnInputAway" class="btn btn-secondary col-3 text-center d-none">Done!</button>
         </div>
     </card>
 
@@ -34,25 +36,65 @@
 
         </form>
 
-        <div class="d-flex flex-column justify-content-center align-items-center">
+        <div id="divHomeScore" class="d-flex flex-column justify-content-center align-items-center">
             <h3>Score:</h3>
-            <h1 id="intHomeScore">0</h1>
+            <h1>0</h1>
             <button id="btnHomeGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
             <button id="btnSetHomeScore" class="btn btn-secondary col-6 text-center">Set Score</button>
+            <input id="intSetHomeScore" type="int" placeholder="Input Home Score" aria-label="Input Home Score" style="display:none">
+            <button id="btnInputHome" class="btn btn-secondary col-3 text-center d-none">Done!</button>
         </div>
     </card>
     
 
-    <script scr="js\lib\jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script scr="js\lib\bootstrap.bundle.min.js"></script>
     
     <script>
+        let awayScore = 0;
+        let homeScore = 0;
 
+        // GOAL! Buttons
         $(document).on('click','#btnAwayGoal',function(){
-            $('#intAwayScore').setValue($('#intAwayScore').val() + 1);
-            console.log("button clicked");
+            awayScore++;
+            $('#divAwayScore h1').replaceWith("<h1>" + (awayScore) + "</h1");
         })
 
+        $(document).on('click','#btnHomeGoal',function(){
+            homeScore++;
+            $('#divHomeScore h1').replaceWith("<h1>" + (homeScore) + "</h1");
+        })
+
+        // Set Score and Return Buttons
+        $(document).on('click','#btnSetAwayScore',function(){
+            $('#btnSetAwayScore').slideUp();
+            $('#intSetAwayScore').slideDown();
+            $('#btnInputAway').removeClass("d-none").slideDown();
+        })
+
+        $(document).on('click','#btnInputAway',function(){
+            awayScore = $('#intSetAwayScore').val();
+            $('#btnSetAwayScore').slideDown();
+            $('#intSetAwayScore').slideUp();
+            $('#btnInputAway').slideUp().addClass("d-none");
+
+            $('#divAwayScore h1').replaceWith("<h1>" + (awayScore) + "</h1");
+        })
+
+        $(document).on('click','#btnSetHomeScore',function(){
+            $('#btnSetHomeScore').slideUp();
+            $('#intSetHomeScore').slideDown();
+            $('#btnInputHome').removeClass("d-none").slideDown();
+        })
+
+        $(document).on('click','#btnInputHome',function(){
+            homeScore = $('#intSetHomeScore').val();
+            $('#btnSetHomeScore').slideDown();
+            $('#intSetHomeScore').slideUp();
+            $('#btnInputHome').slideUp().addClass("d-none");
+
+            $('#divHomeScore h1').replaceWith("<h1>" + (homeScore) + "</h1");
+        })
 
     </script>
 </body>
