@@ -8,16 +8,18 @@
     <link href="css/lib/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="d-flex vh-100 align-items-center">
+
     <card id="crdAwayTeam" class="col-6 d-flex flex-column justify-content-center align-items center">
         <div class="col-12 card-header d-flex justify-content-center">
             <h1>Away Team</h1>
         </div>
 
         <form id="frmAwayRoster" class="col-9 offset:3 form-control">
-
+            <input id="txtAwayPlayer" type="text" placeholder="John Doe 1" aria-label="Enter First Name Last Name Number">
+            <button id="btnAwayRoster" class="btn btn-warning">Completed Roster</button>
         </form>
 
-        <div id="divAwayScore" class="d-flex flex-column justify-content-center align-items-center">
+        <div id="divAwayScore" class="d-flex flex-column justify-content-center align-items-center d-none">
             <h3>Score:</h3>
             <h1>0</h1>
             <button id="btnAwayGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
@@ -25,6 +27,15 @@
             <input id="intSetAwayScore" type="int" placeholder="Input Away Score" aria-label="Input Away Score" style="display:none">
             <button id="btnInputAway" class="btn btn-secondary col-3 text-center d-none">Done!</button>
         </div>
+
+        <table id="tblHomeRoster" class="d-none">
+            <thead>
+                <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
     </card>
 
     <card id="crdHomeTeam" class="col-6 d-flex flex-column justify-content-center align-items center">
@@ -33,10 +44,11 @@
         </div>
 
         <form id="frmHomeRoster" class="col-9 offset:3 form-control">
-
+            <input id="txtHomePlayer" type="text" placeholder="John Doe 1" aria-label="Enter First Name Last Name Number">
+            <button id="btnHomeRoster" class="btn btn-warning">Completed Roster</button>
         </form>
 
-        <div id="divHomeScore" class="d-flex flex-column justify-content-center align-items-center">
+        <div id="divHomeScore" class="d-flex flex-column justify-content-center align-items-center d-none">
             <h3>Score:</h3>
             <h1>0</h1>
             <button id="btnHomeGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
@@ -44,6 +56,15 @@
             <input id="intSetHomeScore" type="int" placeholder="Input Home Score" aria-label="Input Home Score" style="display:none">
             <button id="btnInputHome" class="btn btn-secondary col-3 text-center d-none">Done!</button>
         </div>
+
+        <table id="tblHomeRoster" class="d-none">
+            <thead>
+                <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </card>
     
 
@@ -53,6 +74,14 @@
     <script>
         let awayScore = 0;
         let homeScore = 0;
+
+        // Roster Inputs
+        // Input includes 3 boxes: First Name (text) Last Name (text) Number (int<100)
+        // At the end of the line, put a small button with a check mark or smthng to confirm a player
+        // once clicked, store the player's info in the Roster Table and clear the input boxes for next.
+
+        // Roster Completion Buttons
+        // When clicked, hide the Roster Inputs and Buttons and show the Score and its Functions
 
         // GOAL! Buttons
         $(document).on('click','#btnAwayGoal',function(){
