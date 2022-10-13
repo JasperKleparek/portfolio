@@ -33,7 +33,7 @@
             <button id="btnInputAway" class="btn btn-secondary col-3 text-center d-none">Done!</button>
         </div>
 
-        <table id="tblAwayRoster" class="d-none">
+        <table id="tblAwayRoster" class="">
             <thead>
                 <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
             </thead>
@@ -74,12 +74,12 @@
     
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script scr="js\lib\bootstrap.bundle.min.js"></script>
+    <script src="js/lib/bootstrap.bundle.min.js"></script>
     
     <script>
         let awayScore = 0;
         let homeScore = 0;
-        let awayRoster = [];
+        var awayRoster = [];
         let homeRoster = [];
 
         // Roster Inputs
@@ -91,11 +91,12 @@
         // Roster "Add" Buttons
         let i = 0;
 
-        $(document).on('click','#btnAddAwayPlayer', function(){/*
-            let player = [$('#txtAwayPlayerFirstName').val(), $('#txtAwayPlayerLastName').val(), $('#txtAwayPlayerNumber').val()];
-            awayRoster[i] = player; */
+        $(document).on('click','#btnAddAwayPlayer', function(){
+            let player = {FirstName:$('#txtAwayPlayerFirstName').val(), LastName:$('#txtAwayPlayerLastName').val(), Number:$('#txtAwayPlayerNumber').val()};
+            awayRoster[i] = player;
             i++;
-            console.log(i);
+            $('#tblAwayRoster tbody').append("<tr><td>" + player.FirstName + "</td><td>" + player.LastName + "</td><td>" + player.Number + "</td></tr>");
+            event.preventDefault();
         })
 /*
         $(document).on('click','#btnAddHomePlayer',function(){
