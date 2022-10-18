@@ -9,72 +9,112 @@
 </head>
 <body class="d-flex vh-100 align-items-center">
 
-    <card id="crdAwayTeam" class="col-6 d-flex flex-column justify-content-center align-items center">
-        <div class="col-12 card-header d-flex justify-content-center">
-            <h1>Away Team</h1>
-        </div>
-
-        <form id="frmAwayRoster" class="col-9 form-control d-flex flex-column justify-content-center">
-            <div class="form-group d-flex justify-content-center mb-2">
-                <input id="txtAwayPlayerFirstName" type="text" placeholder="John" aria-label="Enter First Name" class="col-2">
-                <input id="txtAwayPlayerLastName" type="text" placeholder="Doe" aria-label="Enter Last Name" class="col-2">
-                <input id="txtAwayPlayerNumber" type="int" placeholder="1" aria-label="Enter Number"class="col-1 text-center">
-                <button id="btnAddAwayPlayer" class="btn btn-secondary col-2">Add</button>
+    <card id="crdRosters" class="col-6 offset-3 d-flex flex-column justify-content-center align-items-center">
+        <div id="divAwayTeam" class="">
+            <div class="col-12 card-header d-flex justify-content-center">
+                <h1>Away Team</h1>
             </div>
-            <button id="btnAwayRoster" class="btn btn-warning d-none">Completed Roster</button>
-        </form>
+    
+            <form id="frmAwayRoster" class="col-9 form-control d-flex flex-column justify-content-center">
+                <div class="form-group d-flex justify-content-center mb-2">
+                    <input id="txtAwayPlayerFirstName" type="text" placeholder="John" aria-label="Enter First Name" class="col-2">
+                    <input id="txtAwayPlayerLastName" type="text" placeholder="Doe" aria-label="Enter Last Name" class="col-2">
+                    <input id="txtAwayPlayerNumber" type="int" placeholder="1" aria-label="Enter Number"class="col-1 text-center">
+                    <button id="btnAddAwayPlayer" class="btn btn-secondary col-2">Add</button>
+                </div>
+                <button id="btnAwayRoster" class="btn btn-warning">Completed Roster</button>
+            </form>
 
-        <div id="divAwayScore" class="d-flex flex-column justify-content-center align-items-center d-none">
-            <h3>Score:</h3>
-            <h1>0</h1>
-            <button id="btnAwayGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
-            <button id="btnSetAwayScore" class="btn btn-secondary col-6 text-center">Set Score</button>
-            <input id="intSetAwayScore" type="int" placeholder="Input Away Score" aria-label="Input Away Score" style="display:none">
-            <button id="btnInputAway" class="btn btn-secondary col-3 text-center d-none">Done!</button>
+            <table id="tblAwayRoster" class="col-12">
+                <thead>
+                    <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
         </div>
 
-        <table id="tblAwayRoster" class="">
-            <thead>
-                <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+        <div id="divHomeTeam" class="d-none">
+            <div class="col-12 card-header d-flex justify-content-center">
+                <h1>Home Team</h1>
+            </div>
+    
+            <form id="frmHomeRoster" class="col-9 form-control d-flex flex-column justify-content-center">
+                <div class="form-group d-flex justify-content-center mb-2">
+                    <input id="txtHomePlayerFirstName" type="text" placeholder="John" aria-label="Enter First Name" class="col-2">
+                    <input id="txtHomePlayerLastName" type="text" placeholder="Doe" aria-label="Enter Last Name" class="col-2">
+                    <input id="txtHomePlayerNumber" type="int" placeholder="1" aria-label="Enter Number"class="col-1 text-center">
+                    <button id="btnAddHomePlayer" class="btn btn-secondary col-2">Add</button>
+                </div>
+                <button id="btnHomeRoster" class="btn btn-warning">Completed Roster</button>
+            </form>
+
+            <table id="tblHomeRoster" class="col-12">
+                <thead>
+                    <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
     </card>
 
-    <card id="crdHomeTeam" class="col-6 d-flex flex-column justify-content-center align-items center d-none">
-        <div class="col-12 card-header d-flex justify-content-center">
-            <h1>Home Team</h1>
-        </div>
-
-        <form id="frmHomeRoster" class="col-9 offset:3 form-control d-none">
-            <input id="txtHomePlayer" type="text" placeholder="John Doe 1" aria-label="Enter First Name Last Name Number">
-            <button id="btnHomeRoster" class="btn btn-warning">Completed Roster</button>
-        </form>
-
-        <div id="divHomeScore" class="d-flex flex-column justify-content-center align-items-center d-none">
-            <h3>Score:</h3>
-            <h1>0</h1>
-            <button id="btnHomeGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
-            <button id="btnSetHomeScore" class="btn btn-secondary col-6 text-center">Set Score</button>
-            <input id="intSetHomeScore" type="int" placeholder="Input Home Score" aria-label="Input Home Score" style="display:none">
-            <button id="btnInputHome" class="btn btn-secondary col-3 text-center d-none">Done!</button>
-        </div>
-
-        <table id="tblHomeRoster" class="">
-            <thead>
-                <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+    <card id="crdGame" class="col-12 d-none d-flex">
+        <card id="crdAwayTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
+            <div class="col-12 card-header d-flex justify-content-center">
+                <h1>Away Team</h1>
+            </div>
+    
+            <div id="divAwayScore" class="col-12 d-flex flex-column justify-content-center align-items-center">
+                <h3>Score:</h3>
+                <h1>0</h1>
+                <button id="btnAwayGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
+                <button id="btnSetAwayScore" class="btn btn-secondary col-6 text-center">Set Score</button>
+                <input id="intSetAwayScore" type="int" placeholder="Input Away Score" aria-label="Input Away Score" style="display:none">
+                <button id="btnInputAway" class="btn btn-secondary col-3 text-center d-none">Done!</button>
+            </div>
+    
+            <table id="tblAwayRoster" class="col-12">
+                <thead>
+                    <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </card>
+    
+        <card id="crdHomeTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
+            <div class="col-12 card-header d-flex justify-content-center">
+                <h1>Home Team</h1>
+            </div>
+    
+            <div id="divHomeScore" class="col-12 d-flex flex-column justify-content-center align-items-center">
+                <h3>Score:</h3>
+                <h1>0</h1>
+                <button id="btnHomeGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
+                <button id="btnSetHomeScore" class="btn btn-secondary col-6 text-center">Set Score</button>
+                <input id="intSetHomeScore" type="int" placeholder="Input Home Score" aria-label="Input Home Score" style="display:none">
+                <button id="btnInputHome" class="btn btn-secondary col-3 text-center d-none">Done!</button>
+            </div>
+    
+            <table id="tblHomeRoster" class="col-12">
+                <thead>
+                    <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+                </thead>
+                <tbody>
+    
+                </tbody>
+            </table>
+        </card>
     </card>
+    
     
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="js/lib/bootstrap.bundle.min.js"></script>
+    <script src="./js/lib/bootstrap.bundle.min.js"></script>
     
     <script>
         let awayScore = 0;
@@ -89,21 +129,37 @@
 
 
         // Roster "Add" Buttons
-        let i = 0;
 
         $(document).on('click','#btnAddAwayPlayer', function(){
+            let i = 0;
             let player = {FirstName:$('#txtAwayPlayerFirstName').val(), LastName:$('#txtAwayPlayerLastName').val(), Number:$('#txtAwayPlayerNumber').val()};
             awayRoster[i] = player;
             i++;
             $('#tblAwayRoster tbody').append("<tr><td>" + player.FirstName + "</td><td>" + player.LastName + "</td><td>" + player.Number + "</td></tr>");
             event.preventDefault();
         })
+
+        $(document).on('click','#btnAwayRoster', function(){
+            $('#divAwayTeam').toggleClass("d-none");
+            $('#divHomeTeam').toggleClass("d-none");
+            event.preventDefault();
+        })
+
+        $(document).on('click','#btnAddHomePlayer', function(){
+            let i = 0;
+            let player = {FirstName:$('#txtHomePlayerFirstName').val(), LastName:$('#txtHomePlayerLastName').val(), Number:$('#txtHomePlayerNumber').val()};
+            homeRoster[i] = player;
+            i++;
+            $('#tblHomeRoster tbody').append("<tr><td>" + player.FirstName + "</td><td>" + player.LastName + "</td><td>" + player.Number + "</td></tr>");
+            event.preventDefault();
+        })
+
+        $(document).on('click','#btnHomeRoster', function(){
+            $('#crdRosters').toggleClass("d-none");
+            $('#crdGame').toggleClass("d-none");
+            event.preventDefault();
+        })
 /*
-        $(document).on('click','#btnAddHomePlayer',function(){
-            
-        });
-
-
         // Roster Completion Buttons
         // When clicked, hide the Roster Inputs and Buttons and show the Score and its Functions
         let intRosterStatus = 0;
