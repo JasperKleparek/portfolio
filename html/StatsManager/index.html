@@ -61,54 +61,69 @@
         </div>
     </card>
 
-    <card id="crdGame" class="col-12 d-none d-flex">
-        <card id="crdAwayTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
-            <div class="col-12 card-header d-flex justify-content-center">
-                <h1>Away Team</h1>
-            </div>
+    <card id="crdGame" class="col-12 d-none d-flex flex-column">
+        <div id="divScores" class="d-flex col-12">
+            <card id="crdAwayTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
+                <div class="col-12 card-header d-flex justify-content-center">
+                    <h1>Away Team</h1>
+                </div>
+        
+                <div id="divAwayScore" class="col-12 d-flex flex-column justify-content-center align-items-center">
+                    <h3>Score:</h3>
+                    <h1>0</h1>
+                </div>
     
-            <div id="divAwayScore" class="col-12 d-flex flex-column justify-content-center align-items-center">
-                <h3>Score:</h3>
-                <h1>0</h1>
+            </card>
+
+            <card id="crdHomeTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
+                <div class="col-12 card-header d-flex justify-content-center">
+                    <h1>Home Team</h1>
+                </div>
+        
+                <div id="divHomeScore" class="col-12 d-flex flex-column justify-content-center align-items-center">
+                    <h3>Score:</h3>
+                    <h1>0</h1>
+                </div>
+            </card>
+        </div>
+
+        <div id="divGameButtons" class="col-12 d-flex">
+            <div id="divAwayButtons" class="col-6 d-flex flex-column align-items-center">
                 <button id="btnAwayGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
                 <button id="btnSetAwayScore" class="btn btn-secondary col-6 text-center">Set Score</button>
                 <input id="intSetAwayScore" type="int" placeholder="Input Away Score" aria-label="Input Away Score" style="display:none">
                 <button id="btnInputAway" class="btn btn-secondary col-3 text-center d-none">Done!</button>
             </div>
-    
-            <table id="tblAwayRoster" class="col-12">
-                <thead>
-                    <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </card>
-    
-        <card id="crdHomeTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
-            <div class="col-12 card-header d-flex justify-content-center">
-                <h1>Home Team</h1>
-            </div>
-    
-            <div id="divHomeScore" class="col-12 d-flex flex-column justify-content-center align-items-center">
-                <h3>Score:</h3>
-                <h1>0</h1>
+            <div id="divHomeButtons" class="col-6 d-flex flex-column align-items-center">
                 <button id="btnHomeGoal" class="btn btn-primary col-6 text-center">GOAL!</button>
                 <button id="btnSetHomeScore" class="btn btn-secondary col-6 text-center">Set Score</button>
                 <input id="intSetHomeScore" type="int" placeholder="Input Home Score" aria-label="Input Home Score" style="display:none">
                 <button id="btnInputHome" class="btn btn-secondary col-3 text-center d-none">Done!</button>
             </div>
-    
-            <table id="tblHomeRoster" class="col-12">
-                <thead>
-                    <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
-                </thead>
-                <tbody>
-    
-                </tbody>
-            </table>
-        </card>
+        </div>
+
+        <div id="divDisplayRosters" class="d-flex col-12">
+            <card id="crdAwayTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
+                <table id="tblAwayRoster" class="col-12">
+                    <thead>
+                        <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </card>
+            <card id="crdHomeTeam" class="col-6 d-flex flex-column justify-content-center align-items-center">
+                <table id="tblHomeRoster" class="col-12">
+                    <thead>
+                        <tr><th>First Name</th><th>Last Name</th><th>Number</th></tr>
+                    </thead>
+                    <tbody>
+        
+                    </tbody>
+                </table>
+            </card>
+        </div>
     </card>
     
     
@@ -139,12 +154,6 @@
             event.preventDefault();
         })
 
-        $(document).on('click','#btnAwayRoster', function(){
-            $('#divAwayTeam').toggleClass("d-none");
-            $('#divHomeTeam').toggleClass("d-none");
-            event.preventDefault();
-        })
-
         $(document).on('click','#btnAddHomePlayer', function(){
             let i = 0;
             let player = {FirstName:$('#txtHomePlayerFirstName').val(), LastName:$('#txtHomePlayerLastName').val(), Number:$('#txtHomePlayerNumber').val()};
@@ -154,36 +163,20 @@
             event.preventDefault();
         })
 
+        // Roster Completion Buttons
+        // When clicked, hide the Roster Inputs and Buttons and show the Score and its Functions
+
+        $(document).on('click','#btnAwayRoster', function(){
+            $('#divAwayTeam').toggleClass("d-none");
+            $('#divHomeTeam').toggleClass("d-none");
+            event.preventDefault();
+        })
+
         $(document).on('click','#btnHomeRoster', function(){
             $('#crdRosters').toggleClass("d-none");
             $('#crdGame').toggleClass("d-none");
             event.preventDefault();
         })
-/*
-        // Roster Completion Buttons
-        // When clicked, hide the Roster Inputs and Buttons and show the Score and its Functions
-        let intRosterStatus = 0;
-
-        $(document).on('click','#btnAwayRoster', function(){
-            $('#frmAwayRoster').slideToggle();
-            intRosterStatus++;
-
-            if(intRosterStatus >= 2){
-            $('#divAwayScore').slideToggle();
-            $('#divHomeScore').slideToggle();
-        }
-        });
-        
-        $(document).on('click','#btnHomeRoster', function(){
-            $('#frmHomeRoster').slideToggle();
-            intRosterStatus++
-
-            if(intRosterStatus >= 2){
-            $('#divAwayScore').slideToggle();
-            $('#divHomeScore').slideToggle();
-        }
-        });
-
 
         // GOAL! Buttons
         $(document).on('click','#btnAwayGoal',function(){
@@ -226,7 +219,7 @@
 
             $('#divHomeScore h1').replaceWith("<h1>" + (homeScore) + "</h1");
         })
-*/
+
     </script>
 </body>
 </html>
